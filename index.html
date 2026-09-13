@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Follow the Flow</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main id="app">
+
+  <section class="start-screen">
+
+    <header class="hero">
+      <div class="brand">
+  <img
+  src="cw_horizontal_white.png"
+  alt="charity: water"
+  class="charity-logo"
+>
+</div>
+
+      <h1>FOLLOW THE<br>FLOW</h1>
+
+      <p class="subtitle">
+        Every drop has somewhere to go.
+      </p>
+    </header>
+
+
+    <section class="mission-card">
+
+      <p class="mission-text">
+        Guide clean water from its mountain source to the community below. 
+        Protect every drop you can along the way.
+      </p>
+
+      <div class="journey">
+
+        <div class="journey-icon">
+            <img
+            src="mountain.png"
+            alt="Mountain source"
+            style="width: 80px; height: 80px; object-fit: contain;"
+            >
+        </div>
+
+        <div class="journey-arrow">→</div>
+
+       <div class="journey-icon">
+        <img
+        src="water.png"
+        alt="Clean water"
+        style="width: 80px; height: 80px; object-fit: contain;"
+        >
+    </div>
+
+        <div class="journey-arrow">→</div>
+
+        <div class="journey-icon">
+            <img
+            src="community.png"
+            alt="Community"
+            style="width: 80px; height: 80px; object-fit: contain;"
+            >
+        </div>
+
+      </div>
+
+    </section>
+
+
+<section class="instructions">
+
+  <div class="instruction-card">
+    <div class="instruction-icon">
+      <img
+        src="arrows.png"
+        alt="Left and right arrow keys"
+        style="width: 65px; height: 65px; object-fit: contain;"
+      >
+    </div>
+
+    <strong>GUIDE THE FLOW</strong>
+    <span>Use ← → to steer</span>
+  </div>
+
+
+  <div class="instruction-card">
+    <div class="instruction-icon">
+      <img
+        src="hazards.png"
+        alt="Water hazards"
+        style="width: 65px; height: 65px; object-fit: contain;"
+      >
+    </div>
+
+    <strong>AVOID HAZARDS</strong>
+    <span>Protect your clean water</span>
+  </div>
+
+
+  <div class="instruction-card">
+    <div class="instruction-icon">
+      <img
+        src="help.png"
+        alt="Helpful water supply"
+        style="width: 65px; height: 65px; object-fit: contain;"
+      >
+    </div>
+
+    <strong>FIND HELP</strong>
+    <span>Collect items to restore water</span>
+  </div>
+
+</section>
+
+  </section>
+<section class="character-section">
+
+  <h2>CHOOSE YOUR DROP</h2>
+
+  <div class="character-grid">
+
+    <button class="character-card selected" data-character="Ripple">
+      <div class="drop-avatar">
+        <img src="ripple.png" alt="Ripple character">
+    </div>
+      <h3>Ripple</h3>
+      <p>Calm & steady</p>
+    </button>
+
+    <button class="character-card" data-character="Splash">
+      <div class="drop-avatar">
+        <img src="splash.png" alt="Splash character">
+    </div>
+      <h3>Splash</h3>
+      <p>Bold & brave</p>
+    </button>
+
+    <button class="character-card" data-character="Dewey">
+      <div class="drop-avatar">
+        <img src="dewey.png" alt="Dewey character">
+    </div>
+      <h3>Dewey</h3>
+      <p>Small & hopeful</p>
+    </button>
+
+  </div>
+
+ <div class="journey-ready">
+
+  <p class="journey-label">YOUR JOURNEY</p>
+
+  <div class="journey-stats">
+
+    <div class="stat-card">
+      <strong>DESTINATION</strong>
+      <strong>4.2 KM</strong>
+    </div>
+
+    <div class="stat-card">
+      <strong>STARTING WATER</strong>
+      <strong>100%</strong>
+    </div>
+
+  </div>
+
+  <button id="startButton" class="start-button">
+  START THE JOURNEY →
+</button>
+
+<p class="challenge-text">
+  <strong>How much will make it there?</strong>
+</p>
+
+</div>
+
+</section>
+
+<!-- GAME SCREEN -->
+<section id="gameScreen" class="game-screen">
+  <div class="game-hud">
+    <div class="water-hud">
+  <span>CLEAN WATER</span>
+  <strong id="waterPercent">100%</strong>
+
+  <div class="water-bar">
+    <div id="waterBarFill" class="water-bar-fill"></div>
+  </div>
+</div>
+
+    <div>
+      <span>DISTANCE</span>
+      <strong id="distanceRemaining">4.2 KM</strong>
+    </div>
+
+    <div>
+      <span>SCORE</span>
+      <strong id="score">0</strong>
+    </div>
+  </div>
+
+ <div class="game-area">
+
+  <div class="river">
+    <div class="river-line river-line-1"></div>
+    <div class="river-line river-line-2"></div>
+    <div class="river-line river-line-3"></div>
+  </div>
+  <div id="hazard" class="hazard">
+  🪨 </div>
+
+  <img id="player" class="player" src="" alt="Selected water drop">
+
+</div>
+
+</section>
+
+<!-- END GAME SCREEN -->
+
+<section id="endScreen" class="end-screen" style="display: none;">
+
+  <div class="end-card">
+    <h2>YOU MADE IT!</h2>
+
+    <p id="finalWaterText">
+      You delivered 100% clean water.
+    </p>
+
+    <button id="restartButton">
+      PLAY AGAIN
+    </button>
+  </div>
+
+</section>
+
+</main>
+
+<script src="script.js"></script>
