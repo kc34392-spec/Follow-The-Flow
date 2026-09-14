@@ -201,6 +201,35 @@
     </div>
   </div>
 
+  <section class="game-legend" aria-label="Gameplay legend">
+    <div class="legend-group">
+      <h2>AVOID</h2>
+      <div class="legend-item">
+        <img src="rock-hazard.png" alt="Rock hazard">
+        <span><strong>Rock</strong> Lose 10% water, 75 points</span>
+      </div>
+      <div class="legend-item">
+        <img src="dry-hazard.png" alt="Drought hazard">
+        <span><strong>Drought</strong> Lose 15% water, 75 points</span>
+      </div>
+      <div class="legend-item">
+        <img src="contamination-hazard.png" alt="Contamination hazard">
+        <span><strong>Contamination</strong> Lose 20% water, 75 points</span>
+      </div>
+    </div>
+    <div class="legend-group">
+      <h2>COLLECT</h2>
+      <div class="legend-item">
+        <img src="clean-drop.png" alt="Clean water drop">
+        <span><strong>Clean Water Drop</strong> Restore 10% water, gain 100 points</span>
+      </div>
+      <div class="legend-item">
+        <img src="jerry-can.png" alt="Jerry can">
+        <span><strong>Jerry Can</strong> Restore 20% water, gain 150 points</span>
+      </div>
+    </div>
+  </section>
+
  <div class="game-area">
 
   <div class="river">
@@ -209,7 +238,14 @@
     <div class="river-line river-line-3"></div>
   </div>
   <div id="hazard" class="hazard">
-  🪨 </div>
+    <img class="hazard-image rock-image" src="rock-hazard.png" alt="Rock hazard">
+  </div>
+  <div id="hazard2" class="hazard">
+    <img class="hazard-image contamination-image" src="contamination-hazard.png" alt="Contamination hazard">
+  </div>
+  <div id="helpItem" class="help-item">
+    <img class="help-image clean-drop-image" src="clean-drop.png" alt="Clean water collectible">
+  </div>
 
   <img id="player" class="player" src="" alt="Selected water drop">
 
@@ -227,6 +263,21 @@
     <p id="finalWaterText">
       You delivered 100% clean water.
     </p>
+
+    <p id="finalScoreText">FINAL SCORE <strong id="finalScore">0</strong></p>
+
+    <p id="missionMessage">
+  Every drop matters. Real communities face much greater challenges getting reliable access to clean water.
+</p>
+
+<a
+  id="donateButton"
+  href="https://www.charitywater.org/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  HELP KEEP WATER FLOWING
+</a>
 
     <button id="restartButton">
       PLAY AGAIN

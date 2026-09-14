@@ -447,6 +447,72 @@ body {
   font-size: 22px;
 }
 
+.game-legend {
+  width: min(900px, 100%);
+  margin: 0 auto 14px;
+  padding: 10px 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  background: rgba(0, 51, 102, 0.82);
+  border: 1px solid rgba(255, 247, 225, 0.2);
+  border-radius: 14px;
+  color: #FFF7E1;
+}
+
+.legend-group h2 {
+  margin: 0 0 6px;
+  color: #FFC907;
+  font-size: 11px;
+  letter-spacing: 1.4px;
+}
+
+.legend-item {
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.legend-item img {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.legend-item strong {
+  display: inline;
+  margin: 0;
+  font-size: inherit;
+}
+
+.game-screen.progress-source {
+  background: linear-gradient(180deg, #5f96aa, #77A8BB);
+}
+
+.game-screen.progress-middle {
+  background: linear-gradient(180deg, #77A8BB, #8fb1a7);
+}
+
+.game-screen.progress-community {
+  background: linear-gradient(180deg, #a9b39b, #FED8C1);
+}
+
+.game-screen.progress-source .game-area {
+  background: linear-gradient(180deg, #5f96aa, #6f9ca5);
+}
+
+.game-screen.progress-middle .game-area {
+  background: linear-gradient(180deg, #77A8BB, #789e91);
+}
+
+.game-screen.progress-community .game-area {
+  background: linear-gradient(180deg, #8ba99b, #b99d82);
+}
+
 .game-area {
   position: relative;
   width: min(900px, 100%);
@@ -461,6 +527,7 @@ body {
   );
 
   border-radius: 24px;
+  transition: background 1.2s ease;
 }
 .player {
   position: absolute;
@@ -469,12 +536,11 @@ body {
   height: 95px;
 
   object-fit: contain;
-
   left: 50%;
   bottom: 35px;
-
   transform: translateX(-50%);
 }
+
 /* =========================
    RIVER
    ========================= */
@@ -482,55 +548,153 @@ body {
 .river {
   position: absolute;
   inset: 0;
-
   overflow: hidden;
-
-  background: linear-gradient(
-    to bottom,
-    #8BC4D7,
-    #77A8BB
-  );
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 45% 42%, rgba(26, 75, 104, 0.18) 0 14px, transparent 18px),
+    radial-gradient(ellipse at 62% 68%, rgba(26, 75, 104, 0.14) 0 11px, transparent 16px),
+    radial-gradient(ellipse at 50% 30%, rgba(255, 255, 255, 0.13), transparent 38%),
+    linear-gradient(90deg, #6f9da5 0%, #72bbc3 18%, #78c1ca 29%, #4d91ad 42%, #427f9f 50%, #4d91ad 58%, #78c1ca 71%, #72bbc3 82%, #6f9da5 100%);
+  transition: background 1.2s ease;
 }
 
-/* Little water streaks that move toward the player */
+/* Uneven banks leave a broad, unobstructed river channel in the center. */
+
+.river::before,
+.river::after {
+  content: "";
+  position: absolute;
+  top: -4%;
+  bottom: -4%;
+  width: 18%;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 34% 18%, rgba(255, 247, 225, 0.14) 0 2px, transparent 3px),
+    radial-gradient(ellipse at 68% 72%, rgba(26, 26, 26, 0.18) 0 8px, transparent 10px),
+    radial-gradient(ellipse at 28% 48%, rgba(255, 247, 225, 0.1) 0 5px, transparent 7px),
+    linear-gradient(145deg, #607b7b, #496c70 58%, #3f626b);
+  background-size: 74px 92px, 118px 144px, 96px 126px, auto;
+  box-shadow: inset 0 0 24px rgba(0, 51, 102, 0.22);
+  border-radius: 0 42% 50% 0 / 0 18% 21% 0;
+  transition: background 1.2s ease, box-shadow 1.2s ease;
+}
+
+.river::before {
+  left: 0;
+  box-shadow: inset -18px 0 22px rgba(155, 208, 220, 0.5), inset 0 0 24px rgba(0, 51, 102, 0.22);
+}
+
+.river::after {
+  right: 0;
+  border-radius: 42% 0 0 50% / 18% 0 0 21%;
+  box-shadow: inset 18px 0 22px rgba(155, 208, 220, 0.5), inset 0 0 24px rgba(0, 51, 102, 0.22);
+}
+
+.game-screen.progress-middle .river {
+  background:
+    radial-gradient(ellipse at 45% 42%, rgba(26, 75, 104, 0.16) 0 14px, transparent 18px),
+    radial-gradient(ellipse at 62% 68%, rgba(26, 75, 104, 0.12) 0 11px, transparent 16px),
+    radial-gradient(ellipse at 50% 30%, rgba(255, 255, 255, 0.13), transparent 38%),
+    linear-gradient(90deg, #6b9d8b 0%, #75bca9 18%, #7fc5c2 29%, #4d91ad 42%, #427f9f 50%, #4d91ad 58%, #7fc5c2 71%, #75bca9 82%, #6b9d8b 100%);
+}
+
+.game-screen.progress-middle .river::before,
+.game-screen.progress-middle .river::after {
+  background:
+    radial-gradient(circle at 34% 18%, rgba(255, 247, 225, 0.14) 0 2px, transparent 3px),
+    radial-gradient(ellipse at 68% 72%, rgba(26, 26, 26, 0.15) 0 8px, transparent 10px),
+    radial-gradient(ellipse at 28% 48%, rgba(255, 247, 225, 0.1) 0 5px, transparent 7px),
+    linear-gradient(145deg, #73956f, #557c68 58%, #456b61);
+  background-size: 74px 92px, 118px 144px, 96px 126px, auto;
+}
+
+.game-screen.progress-community .river {
+  background:
+    radial-gradient(ellipse at 45% 42%, rgba(26, 75, 104, 0.14) 0 14px, transparent 18px),
+    radial-gradient(ellipse at 62% 68%, rgba(26, 75, 104, 0.1) 0 11px, transparent 16px),
+    radial-gradient(ellipse at 50% 30%, rgba(255, 255, 255, 0.13), transparent 38%),
+    linear-gradient(90deg, #84986f 0%, #9ab99a 18%, #91c4b2 29%, #4d91ad 42%, #427f9f 50%, #4d91ad 58%, #91c4b2 71%, #9ab99a 82%, #84986f 100%);
+}
+
+.game-screen.progress-community .river::before,
+.game-screen.progress-community .river::after {
+  background:
+    radial-gradient(circle at 34% 18%, rgba(255, 247, 225, 0.16) 0 2px, transparent 3px),
+    radial-gradient(ellipse at 68% 72%, rgba(26, 26, 26, 0.14) 0 8px, transparent 10px),
+    radial-gradient(ellipse at 28% 48%, rgba(255, 247, 225, 0.12) 0 5px, transparent 7px),
+    linear-gradient(145deg, #a28f68, #7e9068 58%, #607a61);
+  background-size: 74px 92px, 118px 144px, 96px 126px, auto;
+}
+
+/* Soft curved current details move down the channel without obscuring gameplay. */
 
 .river-line {
   position: absolute;
+  width: 112px;
+  height: 28px;
+  z-index: 2;
+  pointer-events: none;
+  border-top: 2px solid rgba(255, 255, 255, 0.22);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  opacity: 0.75;
+  transform: rotate(-7deg);
+  animation: riverFlow 3.8s linear infinite;
+}
 
-  width: 5px;
-  height: 70px;
+.river-line::before,
+.river-line::after {
+  content: "";
+  position: absolute;
+  width: 34px;
+  height: 9px;
+  border-top: 2px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+}
 
-  background: rgba(255, 255, 255, 0.35);
-  border-radius: 20px;
+.river-line::before {
+  top: 8px;
+  left: 18px;
+  transform: rotate(8deg);
+}
 
-  animation: riverFlow 2.5s linear infinite;
+.river-line::after {
+  right: 9px;
+  bottom: 4px;
+  width: 6px;
+  height: 6px;
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
 }
 
 .river-line-1 {
-  left: 25%;
+  left: 31%;
   animation-delay: 0s;
 }
 
 .river-line-2 {
-  left: 52%;
-  animation-delay: -0.8s;
+  left: 54%;
+  transform: rotate(8deg) scale(0.78);
+  animation-delay: -1.3s;
 }
 
 .river-line-3 {
-  left: 75%;
-  animation-delay: -1.6s;
+  left: 39%;
+  transform: rotate(-3deg) scale(0.62);
+  animation-delay: -2.6s;
 }
 
 @keyframes riverFlow {
-
   from {
     top: -80px;
+    margin-left: -14px;
   }
 
   to {
     top: 700px;
+    margin-left: 14px;
   }
-
 }
 
 /* Keep character above river */
@@ -550,9 +714,69 @@ body {
 
   transform: translateX(-50%);
 
-  font-size: 55px;
-
   z-index: 8;
+}
+
+.hazard-image,
+.help-image {
+  display: block;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.hazard .dry-image {
+  width: 98px;
+  height: 72px;
+}
+
+.hazard .contamination-image {
+  width: 85px;
+  height: 85px;
+}
+
+.help-item {
+  position: absolute;
+  top: -60px;
+  left: 30%;
+  transform: translateX(-50%);
+  z-index: 8;
+}
+
+.help-image {
+  width: 52px;
+  height: 52px;
+}
+
+.help-image.jerry-can-image {
+  width: 62px;
+  height: 62px;
+}
+
+.game-feedback {
+  position: absolute;
+  z-index: 20;
+  transform: translateX(-50%);
+  pointer-events: none;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  animation: feedbackFloat 0.9s ease-out forwards;
+}
+
+.game-feedback.positive {
+  color: #FFF7E1;
+  text-shadow: 0 2px 0 #003366, 0 0 8px rgba(0, 51, 102, 0.9);
+}
+
+.game-feedback.negative {
+  color: #FFC907;
+  text-shadow: 0 2px 0 #003366, 0 0 8px rgba(0, 51, 102, 0.9);
+}
+
+@keyframes feedbackFloat {
+  from { opacity: 1; transform: translate(-50%, 0); }
+  to { opacity: 0; transform: translate(-50%, -35px); }
 }
 
 /* =========================
@@ -626,6 +850,14 @@ body {
   transition: width 0.3s ease;
 }
 
+.water-hud.water-danger {
+  animation: waterDanger 1.4s ease-in-out infinite;
+}
+
+@keyframes waterDanger {
+  50% { box-shadow: 0 0 0 3px rgba(255, 201, 7, 0.35); }
+}
+
 .end-screen {
   min-height: 100vh;
   background: #77A8BB;
@@ -643,7 +875,7 @@ body {
   background: #FFF7E1;
   color: #003366;
 
-  padding: 40px 30px;
+  padding: 42px 30px;
   border-radius: 24px;
 
   text-align: center;
@@ -653,6 +885,30 @@ body {
   margin: 0 0 16px;
   font-size: 42px;
   font-weight: 900;
+}
+
+#finalWaterText {
+  margin: 0;
+  color: #003366;
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+#finalScoreText {
+  margin: 22px 0 0;
+  color: #587085;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+}
+
+#finalScore {
+  display: block;
+  margin-top: 4px;
+  color: #003366;
+  font-size: 34px;
+  letter-spacing: 0;
 }
 
 .end-card p {
@@ -674,4 +930,52 @@ body {
   font-weight: 900;
 
   cursor: pointer;
+}
+
+.help-item {
+  position: absolute;
+  top: -60px;
+  left: 30%;
+  transform: translateX(-50%);
+  font-size: 50px;
+  z-index: 8;
+}
+
+#hazard2 {
+  display: none;
+}
+
+#missionMessage {
+  margin-top: 18px;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+#donateButton {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 16px 26px;
+  border-radius: 14px;
+  background: #003366;
+  color: #FFF7E1;
+  text-decoration: none;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+#donateButton:hover {
+  background: #FFC907;
+  color: #1A1A1A;
+}
+
+@media (max-width: 600px) {
+  .game-legend {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .legend-item {
+    font-size: 10px;
+  }
 }
