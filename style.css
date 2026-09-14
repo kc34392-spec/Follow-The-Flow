@@ -1053,15 +1053,13 @@ body {
 
 @media (max-width: 900px) {
   .game-screen .mobile-controls {
-    position: absolute;
-    left: 50%;
-    bottom: 14px;
-    z-index: 30;
+    position: static;
     width: min(360px, calc(100% - 28px));
+    margin: 14px auto 0;
     display: flex;
     justify-content: center;
     gap: 16px;
-    transform: translateX(-50%);
+    transform: none;
   }
 
   .game-screen .mobile-control {
