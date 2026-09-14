@@ -533,6 +533,31 @@ body {
 .mobile-controls {
   display: none;
 }
+
+.game-screen .mobile-controls.mobile-controls-visible {
+  position: static;
+  width: min(360px, calc(100% - 28px));
+  margin: 14px auto 0;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.game-screen .mobile-controls-visible .mobile-control {
+  width: min(42vw, 170px);
+  height: 58px;
+  border: 2px solid rgba(0, 51, 102, 0.35);
+  border-radius: 14px;
+  background: #FFC907;
+  color: #003366;
+  box-shadow: 0 4px 0 rgba(0, 51, 102, 0.28);
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+}
 .player {
   position: absolute;
 

@@ -33,6 +33,7 @@ const startButton = document.getElementById("startButton");
 const startScreen = document.querySelector(".start-screen");
 const characterSection = document.querySelector(".character-section");
 const gameScreen = document.getElementById("gameScreen");
+const mobileControls = document.querySelector(".mobile-controls");
 
 const hazardImage = document.querySelector("#hazard .hazard-image");
 const hazard2Image = document.querySelector("#hazard2 .hazard-image");
@@ -60,6 +61,9 @@ startButton.addEventListener("click", () => {
   characterSection.style.display = "none";
 
   gameScreen.style.display = "block";
+  if (window.matchMedia("(max-width: 900px)").matches || navigator.maxTouchPoints > 0) {
+    mobileControls.classList.add("mobile-controls-visible");
+  }
   updateProgressState();
 
   window.scrollTo(0, 0);
