@@ -1050,3 +1050,33 @@ body {
     box-shadow: 0 2px 0 rgba(0, 51, 102, 0.28);
   }
 }
+
+@media (max-width: 900px) {
+  .game-screen .mobile-controls {
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    z-index: 30;
+    width: min(360px, calc(100% - 28px));
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    transform: translateX(-50%);
+  }
+
+  .game-screen .mobile-control {
+    width: min(42vw, 170px);
+    height: 58px;
+    border: 2px solid rgba(0, 51, 102, 0.35);
+    border-radius: 14px;
+    background: #FFC907;
+    color: #003366;
+    box-shadow: 0 4px 0 rgba(0, 51, 102, 0.28);
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+  }
+}
