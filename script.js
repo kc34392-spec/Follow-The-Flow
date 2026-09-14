@@ -102,11 +102,13 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-document.getElementById("moveLeftButton").addEventListener("click", () => {
+document.getElementById("moveLeftButton").addEventListener("pointerdown", (event) => {
+  event.preventDefault();
   movePlayer(-1);
 });
 
-document.getElementById("moveRightButton").addEventListener("click", () => {
+document.getElementById("moveRightButton").addEventListener("pointerdown", (event) => {
+  event.preventDefault();
   movePlayer(1);
 });
 // =========================

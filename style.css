@@ -1007,6 +1007,7 @@ body {
     font-weight: 900;
     line-height: 1;
     cursor: pointer;
+    user-select: none;
     touch-action: manipulation;
   }
 
