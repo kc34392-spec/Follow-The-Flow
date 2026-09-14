@@ -77,6 +77,16 @@ let cleanWater = 100;
 let distance = 4.2;
 let score = 0;
 
+function movePlayer(direction) {
+  if (gameScreen.style.display !== "block") {
+    return;
+  }
+
+  playerX += direction * 4;
+  playerX = Math.max(7, Math.min(93, playerX));
+  player.style.left = playerX + "%";
+}
+
 document.addEventListener("keydown", (event) => {
 
   if (gameScreen.style.display !== "block") {
@@ -84,17 +94,20 @@ document.addEventListener("keydown", (event) => {
   }
 
   if (event.key === "ArrowLeft" || event.key.toLowerCase() === "a") {
-    playerX -= 4;
+    movePlayer(-1);
   }
 
   if (event.key === "ArrowRight" || event.key.toLowerCase() === "d") {
-    playerX += 4;
+    movePlayer(1);
   }
+});
 
-  // Keep player inside the game area
-  playerX = Math.max(7, Math.min(93, playerX));
+document.getElementById("moveLeftButton").addEventListener("click", () => {
+  movePlayer(-1);
+});
 
-  player.style.left = playerX + "%";
+document.getElementById("moveRightButton").addEventListener("click", () => {
+  movePlayer(1);
 });
 // =========================
 // HAZARD MOVEMENT
